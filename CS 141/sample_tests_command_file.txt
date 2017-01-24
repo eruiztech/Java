@@ -1,0 +1,120 @@
+//////////////////////////////////////////////////////////////////////////////
+// Command Input File for Fraction and MixedFraction Classes
+//////////////////////////////////////////////////////////////////////////////
+//
+// Lines are made up of space delimited values of the following syntax:
+//
+//   CLASS METHOD ARG1? ARG2? ARG3? EXPECTED_RESULT
+//
+// Not all args are required, it depends on the method being tested.
+// The number of args are determined by:
+//    
+//   First element of the line.......is the class
+//   Second element of the line......is the method
+//   Last element of the line........is the expected result
+//   All elements between the method and the expected result are args.
+//
+//    NOTE: according to the UML diagram, no method has more than 3 args.
+//
+// To describe a fraction in this command file, use a comma-delimited
+// (no spaces) list of integers.  For example:
+//
+//   1 3/4       would be typed as     1,3,4
+//   22/3        would be typed as     22,3   or   0,22,3 as MixedFraction
+//   5           would be typed as     5,1    or   5,0,1  as MixedFraction
+//
+// EXPECTED RESULTS
+//
+//   The final field, Expected Result, is used to check for validity
+//   and is always required as a Fraction, MixedFraction, true, or false.  
+//   See the full example below for details.
+//
+// COMMENTS AND BLANK LINES:
+//    
+//    You can put comments on lines by themselves and start the line
+//    with 2 slashes: //
+//   
+//    Comment and blank lines are skipped by the driver program.
+//
+// SEQUENTIAL PROCESSING
+//
+//    The driver program makes available 2 variables: Fraction F and
+//    MixedFraction MF.  When a Fraction or MixedFraction is created
+//    or modified, these variables hold the values.
+//
+//    To test some methods, you first have to have a 'setup'.  For
+//    example, to test the 'add' method we first need to create a
+//    Fraction or MixedFraction and then add another.  This will use
+//    the available F or MF variables, respectively.
+//
+//    For example, to test the 'add' method, we need to create a
+//    Fraction and then add another value to it.  The command input
+//    lines would look something like:
+//
+//    // Create initial F 1/2: pass in 1 and 2 and expect 1/2
+//    Fraction Fraction 1 2 1,2
+//    // Now add 3/2 and we expect 2.  But expected result 4 needs to
+//    //    be represented as a fraction.
+//    Fraction add 3,2 2,1
+//
+//  
+// FULL EXAMPLE: 
+//   We'll write the command input to
+//       - create a Fraction of 1/2 (expect 1 1/2)
+//       - add 3/2 (expect 2)
+//       - multply by 4 (expect 8)
+//       - see if F equals 8 (expect true)
+//       - create a MixedFraction of 1 3/4 (expect 1 3/4)
+//       - add 22/4 (expect )
+//       - divide by 1 1/2 (expect )
+//       - see if MF equals 500 3/27 (expect false)
+//
+//    // Create a Fraction of 1/2 (expect 1 1/2)
+//    Fraction Fraction 1 2 1,2
+//
+//    // add 3/2 (expect 2)
+//    Fraction add 3,2 2,1
+//
+//    // multply by 4 (expect 8)
+//    Fraction multiply 4,1 8,1
+//
+//    // see if F equals 8 (expect true)
+//    Fraction equals 8,1 true
+//
+//    // Create a MixedFraction of 1 3/4 (expect 1 3/4)
+//    MixedFraction MixedFraction 1 3 4 1,3,4
+//
+//    // add 22/4 (expect 7 1/4)
+//    MixedFraction add 0,22,4 7,1,4
+//
+//    // divide by 1 1/2 (expect 4 5/6)
+//    MixedFraction divide 1,1,2 4,5,6
+//
+//    // see if MF equals 500 3/27 (expect false)
+//    MixedFraction equals 500,3,27 false
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// Create a Fraction of 1/2 (expect 1 1/2)
+Fraction Fraction 1 2 1,2
+
+// add 3/2 (expect 2)
+Fraction add 3,2 2,1
+
+// multply by 4 (expect 8)
+Fraction multiply 4,1 8,1
+
+// see if F equals 8 (expect true)
+Fraction equals 8,1 true
+
+// Create a MixedFraction of 1 3/4 (expect 1 3/4)
+MixedFraction MixedFraction 1 3 4 1,3,4
+
+// add 22/4 (expect 7 1/4)
+MixedFraction add 0,22,4 7,1,4
+
+// divide by 1 1/2 (expect 4 5/6)
+MixedFraction divide 1,1,2 4,5,6
+
+// see if MF equals 500 3/27 (expect false)
+MixedFraction equals 500,3,27 false
